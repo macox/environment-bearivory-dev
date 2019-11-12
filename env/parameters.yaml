@@ -1,0 +1,14 @@
+adminUser:
+  password: vault:bearivory/adminUser:password
+  username: admin
+dashboardAuthID: vault:bearivory:dashboardAuthID
+dashboardAuthOrg: arcalos-dashboard
+dashboardAuthSecret: vault:bearivory:dashboardAuthSecret
+dashboardGrpchost: dex.jx
+enableDocker: false
+pipelineUser:
+  email: arcalos-admin@googlegroups.com
+  token: vault:bearivory/pipelineUser:token
+  username: arcalos-bot
+prow:
+  hmacToken: vault:bearivory/prow:hmacToken

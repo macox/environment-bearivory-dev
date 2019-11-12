@@ -1,38 +1,95 @@
 autoUpdate:
   enabled: true
-  schedule: '0 0 * * *'
+  schedule: 0 0 * * *
+bootConfigURL: https://github.com/cloudbees/arcalos-boot-config.git
 cluster:
-  clusterName: ""
-  environmentGitOwner: ""
-  project: ""
+  clusterName: bearivory
+  environmentGitOwner: arcalos-environments
+  environmentGitPublic: true
+  externalDNSSAName: bearivory-dn
+  gitKind: github
+  gitName: github
+  gitPublic: true
+  gitServer: https://github.com
+  gke:
+    projectNumber: "440243892681"
+  kanikoSAName: bearivory-ko
+  namespace: jx
+  project: aps-bearivory
   provider: gke
-  zone: ""
-gitops: true
+  registry: gcr.io
+  vaultName: bearivory
+  vaultSAName: bearivory-vt
+  zone: us-east1-c
+environments:
+- ingress:
+    cloud_dns_secret_name: external-dns-gcp-sa
+    domain: aps-bearivory.play-jxaas.live
+    domainIssuerURL: https://jx-tenant-service-jx.aps-raccoonshimmer.play-jxaas.live
+    externalDNS: true
+    namespaceSubDomain: -jx.
+    tls:
+      email: jenkins-x@cloudbees.com
+      enabled: true
+      production: true
+  key: dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
 githubApp:
   enabled: false
-  url: ""
-  schedule: '0 0 * * *'
-environments:
-- key: dev
-- key: staging
-- key: production
+  schedule: 0 0 * * *
+  url: https://lighthouse-githubapp-jx.aps-raccoonshimmer.play-jxaas.live
+gitops: true
 ingress:
-  domain: ""
-  externalDNS: false
+  cloud_dns_secret_name: external-dns-gcp-sa
+  domain: aps-bearivory.play-jxaas.live
+  domainIssuerURL: https://jx-tenant-service-jx.aps-raccoonshimmer.play-jxaas.live
+  externalDNS: true
+  namespaceSubDomain: -jx.
   tls:
     email: jenkins-x@cloudbees.com
     enabled: true
-    production: false
+    production: true
 kaniko: true
+repository: nexus
 secretStorage: vault
 storage:
+  backup:
+    enabled: true
+    url: gs://aps-bearivory-backup
   logs:
-    enabled: false
-    url: ""
+    enabled: true
+    url: gs://aps-bearivory-lts
   reports:
     enabled: false
     url: ""
   repository:
     enabled: false
     url: ""
+vault:
+  bucket: aps-bearivory-vault
+  key: bearivory-crypto-key
+  keyring: bearivory-keyring
+  name: bearivory
+  serviceAccount: bearivory-vt
+velero: {}
+versionStream:
+  ref: v0.0.106
+  url: https://github.com/cloudbees/arcalos-jenkins-x-versions.git
 webhook: prow
