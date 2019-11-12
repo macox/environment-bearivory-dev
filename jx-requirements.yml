@@ -88,7 +88,8 @@ vault:
   keyring: bearivory-keyring
   name: bearivory
   serviceAccount: bearivory-vt
-velero: {}
+velero:
+  namespace: velero
 versionStream:
   ref: v0.0.106
   url: https://github.com/cloudbees/arcalos-jenkins-x-versions.git
