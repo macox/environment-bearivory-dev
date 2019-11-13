@@ -89,7 +89,7 @@ pipelineConfig:
             - token
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.210
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.215
             name: get-tenant-token
           - args:
             - upgrade
@@ -251,7 +251,7 @@ pipelineConfig:
             - repositories
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.210
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.215
             name: register-repositories
           - args:
             - get
@@ -259,7 +259,7 @@ pipelineConfig:
             - token
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.210
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.215
             name: refresh-git-tokens
           - args:
             - update
